@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, } from '@angular/forms';
+import { Router } from '@angular/router';
 // import { NgModule } from '@angular/core';
 
 @Component({
@@ -19,7 +20,10 @@ export class RegistrationComponent {
   
   ngOnInit(){this.status=0}
 
-  addProduct (){
+  //routing
+  constructor(public router: Router ) {} //routing
+  
+  register (){
     //this.product_obj = {Name: this.product_name}
     
      this.form_obj = {firstName: "First Name: " + this.firstName,  lastName:"Last Name: " + this.lastName, email: "Email: " +this.email, password: "Password: " + this.password};
@@ -27,7 +31,9 @@ export class RegistrationComponent {
     this.status=1;
     alert("registration successful" )
     this.firstName = ""; this.lastName=""; this.email= ""; this.password="";
-    
+     
+    this.router.navigate(['/dashboard'])
+
     
     
   }
