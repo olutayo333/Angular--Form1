@@ -1,0 +1,31 @@
+
+<div class="container-fluid mt-5">
+    <div class="row col-lg-4 col-11 shadow px-3 py-4 col-11 mx-auto ">
+        
+        <input type="text" class="form-control mx-auto my-2" placeholder="First Name" [(ngModel)]= "firstName" >
+        <input  class="form-control mx-auto my-2" type="text" placeholder="Last Name" [(ngModel)]= "lastName" >
+        <input  class="form-control mx-auto my-2" type="email" placeholder="Email" [(ngModel)]= "email">
+        <input  class="form-control mx-auto my-2" type="password" placeholder="password" [(ngModel)]= "password">
+        <button (click)="addProduct()" class="btn btn-primary" > REGISTER </button>
+    </div>
+    <div class=" mx-auto row col-lg-4 col-11 my-2">
+      <p> {{form_obj.firstName}}</p>
+      <p> {{form_obj.lastName}}</p>
+      <p> {{form_obj.email}}</p>
+      <p> {{form_obj.password}}</p>
+        <!-- <p *ngIf= "status == 0 " >
+            No Products Yet
+        </p>
+       
+        <p>First Name: {{firstName}}</p>
+        <p>Last Name:{{lastName}}</p>
+        <p>Email: {{email}}</p>
+        <p>Password: {{password}}</p> -->
+       
+    
+    </div>
+</div>
+
+<!-- <p *ngIf="generalArray.length <= 0 ">
+    No Products Yet
+</p> -->
