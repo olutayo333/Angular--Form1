@@ -1,0 +1,87 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center py-auto">
+        <div class="col-lg-6 shadow mt-5 py-5 px-4">
+            <form  [formGroup]="formtwo" (ngSubmit)="signup()">
+                <input type="text" placeholder="First Name" name="firstName" class="form-control my-2" formControlName="firstName"
+                    [class.isvalid]="formtwo.get('firstName')?.valid && formtwo.get('firstName')?.touched"
+                    [class.is-invalid]="formtwo.get('firstName')?.invalid && formtwo.get('firstName')?.touched">
+                    <div class="text-danger" *ngIf="formtwo.get('firstName')?.invalid  && formtwo.get('firstName')?.dirty">
+                        <span *ngIf="formtwo.get('firstName')?.errors?.['required']"> This input is required </span>
+                        <span *ngIf="formtwo.get('firstName')?.errors?.['minlength']"> Enter a valid name </span>                    
+                    </div>
+
+                <input type="text" placeholder="Last Name" name="lastName" class="form-control my-2" formControlName="lastName"
+                    [class.isvalid]="formtwo.get('lastName')?.valid && formtwo.get('lastName')?.touched"
+                    [class.is-invalid]="formtwo.get('lastName')?.invalid && formtwo.get('lastName')?.touched"> 
+                    <div class="text-danger" *ngIf="formtwo.get('lastName')?.invalid  && formtwo.get('lastName')?.dirty">
+                        <span *ngIf="formtwo.get('lastName')?.errors?.['required']"> This input is required </span>
+                        <span *ngIf="formtwo.get('lastName')?.errors?.['minlength']"> Enter a valid name </span>                    
+                    </div>
+
+                <input type="email" placeholder="email" name="email" class="form-control my-2" formControlName="email"
+                    [class.isvalid]="formtwo.get('email')?.valid && formtwo.get('email')?.touched"
+                    [class.is-invalid]="formtwo.get('email')?.invalid && formtwo.get('email')?.touched">
+                    <div class="text-danger" *ngIf="formtwo.get('email')?.invalid  && formtwo.get('email')?.dirty">
+                        <span *ngIf="formtwo.get('email')?.errors?.['required']"> This input is required </span>
+                        <span *ngIf="formtwo.get('email')?.errors?.['pattern']"> Enter a valid email </span>                    
+                    </div>
+
+                <input type="text" placeholder="Phone Number" name="phoneNumber" class="form-control my-2" formControlName="phoneNumber"
+                    [class.isvalid]="formtwo.get('phoneNumber')?.valid && formtwo.get('phoneNumber')?.touched"
+                    [class.is-invalid]="formtwo.get('phoneNumber')?.invalid && formtwo.get('phoneNumber')?.touched">
+                    <div class="text-danger" *ngIf="formtwo.get('phoneNumber')?.invalid  && formtwo.get('phoneNumber')?.dirty">
+                        <span *ngIf="formtwo.get('phoneNumber')?.errors?.['required']"> This input is required </span>
+                        <span *ngIf="formtwo.get('phoneNumber')?.errors?.['minlength']"> Enter your 11 digit phonenumber </span> 
+                        <span *ngIf="formtwo.get('phoneNumber')?.errors?.['maxlength']"> Enter your 11 digit phonenumber </span>                   
+                    </div>
+
+                <input type="number" placeholder="Age" name="age" class="form-control my-2" formControlName="age"
+                    [class.isvalid]="formtwo.get('age')?.valid && formtwo.get('age')?.touched"
+                    [class.is-invalid]="formtwo.get('age')?.invalid && formtwo.get('age')?.touched">
+                    <div class="text-danger" *ngIf="formtwo.get('age')?.invalid  && formtwo.get('age')?.dirty">
+                        <span *ngIf="formtwo.get('age')?.errors?.['required']"> This input is required </span>
+                        <span *ngIf="formtwo.get('age')?.errors?.['min']"> You must be at least 18 years </span> 
+                        <span *ngIf="formtwo.get('age')?.errors?.['max']"> You must not be more than 30 years </span>                   
+                    </div>
+
+                <input type="password" placeholder="password" name="password" class="form-control my-2" formControlName="password"
+                [class.isvalid]="formtwo.get('password')?.valid && formtwo.get('password')?.touched"
+                [class.is-invalid]="formtwo.get('password')?.invalid && formtwo.get('password')?.touched">
+                <div class="text-danger" *ngIf="formtwo.get('password')?.invalid  && formtwo.get('password')?.dirty">
+                    <span *ngIf="formtwo.get('password')?.errors?.['required']"> This input is required </span>
+                    <span *ngIf="formtwo.get('password')?.errors?.['minlength']"> password must be more than 8 characters</span>
+                    <span *ngIf="formtwo.get('password')?.errors?.['pattern']"> password must be must contain Uppercase, LowerCase, Characters and Number</span>                    
+                </div>
+
+                <input type="checkbox" name="over18" class="" placeholder="over18" value="over 18 years" formControlName="over18">
+                <div *ngIf="this.formtwo.value['over18']==false" class="text-danger">Thick this box to confirm you are over 18 years old</div> 
+                
+                <button class="btn btn-primary"  [disabled]="this.formtwo.value['firstName']=='' || this.formtwo.value['lastName']=='' ||
+                this.formtwo.value['email']=='' || this.formtwo.value['phoneNumber']=='' || this.formtwo.value['age']=='' ||
+                this.formtwo.value['password']=='' || this.formtwo.value['over18']==false  " 
+                >Sign up</button>
+                
+                
+                <!-- <button class="btn btn-primary"  [disabled]="this.formtwo.invalid || this.formtwo.value['over18']==false">Sign up</button> -->
+                <p class="text-danger shadow"> <b>{{this.message}}</b></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- <input type="checkbox" name="over18" class="" placeholder="over18" value=true [(ngModel)]="CB" required
+                #CBC="ngModel" [class.is-valid]="CBC.valid && CBC.touched"  [class.is-invalid]="EM.invalid && EM.touched"
+                > Over 18 ?
+                <div class="text-danger" *ngIf="CBC.invalid "> 
+                    <span *ngIf="CBC.errors?.['required']">Thick The Box To Confirm You Are Over 18 Years </span>
+                </div> -->
+
+
+
+    <!-- <button (click)="signup()" class="btn btn-dark w-100" type="submit()" [disabled]="formone.invalid" > REGISTER </button> -->
+            

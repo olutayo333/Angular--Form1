@@ -1,0 +1,91 @@
+<div class="container-fluid mt-5 align-content-center">
+    <div class="row mx-auto py-4 text-center align-content-center">
+        <div class="shadow col-lg-9 d-flex">
+            <div class="col-lg-3 col-4 bg-dark text-white align-content-center justify-content-center ms-lg-5">
+                <h2>Reactive Form</h2>
+                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Ipsum nisi voluptas asperiores iusto culpa, explicabo labore cupiditate vero quae repellat?
+                </p>
+            </div>
+            <div class=" col-lg-6 col-8 px-3 py-2 rounded">
+                <h1> <u><b>Reactive Form</b></u></h1>
+                <form [formGroup]="reactiveFormGroup" (ngSubmit)="register()" >
+                   
+                        <input type="text" class="form-control mx-auto my-2" placeholder="First Name" name="firstName" formControlName="firstName" 
+                        [class.isvalid]= "reactiveFormGroup.get('firstName')?.valid && reactiveFormGroup.get('firstName')?.touched"
+                        [class.is-invalid]= "reactiveFormGroup.get('firstName')?.invalid && reactiveFormGroup.get('firstName')?.touched" >
+                        <div class="text-danger" *ngIf="reactiveFormGroup.get('firstName')?.invalid && reactiveFormGroup.get('firstName')?.touched">
+                        <span *ngIf="reactiveFormGroup.get('firstName')?.errors?.['required']">
+                            Input is required
+                        </span>
+                        <span *ngIf="reactiveFormGroup.get('firstName')?.errors?.['minlength']">
+                            The minimum lenght is 10
+                        </span>
+                        </div>
+                   
+                        <input  class="form-control mx-auto my-2" type="text" name="lastName" placeholder="Last Name" formControlName="lastName"
+                        [class.isvalid]= "reactiveFormGroup.get('lastName')?.valid && reactiveFormGroup.get('lastName')?.touched"
+                        [class.is-invalid]= "reactiveFormGroup.get('lastName')?.invalid && reactiveFormGroup.get('lastName')?.touched" 
+                        >
+                        <div class="text-danger" *ngIf="reactiveFormGroup.get('lastName')?.invalid && reactiveFormGroup.get('lastName')?.touched">
+                            <span *ngIf="reactiveFormGroup.get('lastName')?.errors?.['required']">This input is invalid</span>
+                        </div>
+                   
+                        <input  class="form-control mx-auto my-2" type="email" placeholder="Email" name="email" formControlName="email"
+                        [class.isvalid]= "reactiveFormGroup.get('email')?.valid && reactiveFormGroup.get('email')?.touched"
+                        [class.is-invalid]= "reactiveFormGroup.get('email')?.invalid && reactiveFormGroup.get('email')?.touched"
+                         >
+                        <div class="text-danger" *ngIf="reactiveFormGroup.get('email')?.invalid && reactiveFormGroup.get('email')?.dirty">
+                            <span *ngIf="reactiveFormGroup.get('email')?.errors?.['required']"> This input is required </span>
+                            <span *ngIf="reactiveFormGroup.get('email')?.errors?.['email']"> Enter a valid email address </span>
+                
+                        </div>
+                   
+                        <input class="form-control mx-auto my-2" type="number" placeholder="phone number" name="phoneNumber" formControlName="phoneNumber"
+                        [class.isvalid]= "reactiveFormGroup.get('phoneNumber')?.valid && reactiveFormGroup.get('phoneNumber')?.touched"
+                        [class.is-invalid]= "reactiveFormGroup.get('phoneNumber')?.invalid && reactiveFormGroup.get('phoneNumber')?.touched" 
+                        >
+                        <div class="text-danger" *ngIf="reactiveFormGroup.get('phoneNumber')?.invalid && reactiveFormGroup.get('phoneNumber')?.dirty">
+                            <span *ngIf="reactiveFormGroup.get('phoneNumber')?.errors?.['required']"> This input is required </span>
+                            <!-- <span *ngIf="reactiveFormGroup.get('phoneNumber')?.errors?.['noCountryCode']">Include Nigeria Country code  </span> -->
+                        </div>
+                    
+                        <input  class="form-control mx-auto my-2" type="password" placeholder="password" name="password" formControlName="password"
+                        [class.isvalid]= "reactiveFormGroup.get('password')?.valid && reactiveFormGroup.get('password')?.touched"
+                        [class.is-invalid]= "reactiveFormGroup.get('password')?.invalid && reactiveFormGroup.get('password')?.touched" 
+                        >
+                        <div class="text-danger" *ngIf="reactiveFormGroup.get('password')?.invalid && reactiveFormGroup.get('password')?.touched">
+                            <span *ngIf="reactiveFormGroup.get('password')?.errors?.['required']">This input is required </span>
+                        </div>
+                   
+                        <input type="checkbox" name="over18" class="" placeholder="over18" value="over 18 years"  formControlName="over18"
+                        [class.isvalid]="reactiveFormGroup.get('over18')?.valid && reactiveFormGroup.get('over18')?.touched"
+                        [class.is-invalid]="reactiveFormGroup.get('over18')?.invalid && reactiveFormGroup.get('over18')?.touched "> Over 18 ?
+                        <div class="text-danger" *ngIf="reactiveFormGroup.get('over18')?.invalid "> 
+                            <span *ngIf="reactiveFormGroup.get('over18')?.errors?.['required']">Thick The Box To Confirm You Are Over 18 Years </span>
+                        </div> 
+                    <!-- <button class="btn btn-primary"  [disabled]="formtwo.invalid">Sign up</button>
+               -->
+                    <button  class="btn btn-dark w-100" type="submit" [disabled]="reactiveFormGroup.invalid" > REGISTER </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class=" mx-auto row col-lg-4 col-11 my-2">
+      <!-- <p> {{form_obj.firstName}}</p>
+      <p> {{form_obj.lastName}}</p>
+      <p> {{form_obj.email}}</p>
+      <p> {{form_obj.password}}</p> -->
+        <!-- <p *ngIf= "status == 0 " >
+            No Products Yet
+        </p>
+       
+        <p>First Name: {{firstName}}</p>
+        <p>Last Name:{{lastName}}</p>
+        <p>Email: {{email}}</p>
+        <p>Password: {{password}}</p> -->
+       
+    
+    </div>
+</div>
